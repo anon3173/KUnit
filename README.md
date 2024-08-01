@@ -16,7 +16,7 @@ This repository contains source code of KUnit, benchmark used for empirical eval
 └── RQ2-Results                        # Contains results of comparing KUnit with DeepDiagnosis
 ```
 # Benchmark for Empirical Evaluation
-The 50 buggy programs used for empicial evaluation are stored under the directory [a link]((https://github.com/anon3173/KUnit/Benchmark_Empirical_Evaluation)). Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separted in different files used for evaluating KUnit.
+The 50 buggy programs used for empicial evaluation are stored under the directory [Benchmark_Empirical_Evaluation](Benchmark_Empirical_Evaluation). Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separted in different files used for evaluating KUnit.
 
 # Datasets used for User Study
 The directory [a link](Datasets_UserStudy) contains the 5 datasets used in user study.
