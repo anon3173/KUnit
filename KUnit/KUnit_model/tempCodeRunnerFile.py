@@ -1,0 +1,1 @@
+unit = int(self.my_model.layers[len(self.my_model.layers)-1].__getattribute__('units'))
