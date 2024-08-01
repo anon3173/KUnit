@@ -1,0 +1,1 @@
+	Batch 0 layer 2:  Out of Rang Problem, terminating training		 --- 0.7170229999999997 seconds ---	 	 change the activation function to softmax 	
