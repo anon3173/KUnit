@@ -10,3 +10,5 @@ This repository contains source code of KUnit, benchmark used for empirical eval
 ├── Participants_Response              # Contains qualitative response from user study participants
 └── RQ2-Results                        # Contains results of comparing KUnit with DeepDiagnosis
 ```
+# Benchmark_Empirical_Evaluation
+Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separted in different files used evaluating KUnit.
