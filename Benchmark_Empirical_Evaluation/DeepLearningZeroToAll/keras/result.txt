@@ -1,0 +1,1 @@
+	Batch 0: Invalid accuracy, terminating training		 --- 0.2498579999999999 seconds ---	 	 Please change the activation function at layer : 1 	
