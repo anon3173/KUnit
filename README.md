@@ -22,7 +22,7 @@ The 50 buggy programs used for empicial evaluation are stored under the director
 The directory [Datasets_UserStudy](Datasets_UserStudy) contains the 5 datasets used in user study.
 
 # KUnit
-To run KUnit, one needs to create a virtual environment. The instructions for creating virtual environment and how to use KUnit for mock testing are provided in [Instructions.txt](Instructions.txt). 
+To run KUnit, one needs to create a virtual environment. The instructions for creating virtual environment and how to use KUnit for mock testing are provided in [Instructions.txt](Instructions.txt). The motivation example is provided as a reference example. Follow the instructions to reproduce the results.
 
 
 # User Study Task Description
