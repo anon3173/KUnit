@@ -1,0 +1,277 @@
+SNo.,Stack Overflow #,Type of Task,Issues in Buggy Version of Program,Issue Identified by KUnit in Data Preparation Stage,Issue Identified by KUnit in Model Design Stage,Issues Identified by DeepDiagnosis
+1,50306988,BC,"-- model.add(Dense(units=nr_classes, activation='softmax'))
+++ model.add(Dense(units=nr_classes, activation='sigmoid'))
+-- model.compile(loss=‘categorical_crossentropy', optimizer=‘adam', metrics=['accuracy'])
+++ model.compile(loss=‘binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+",No Bug,"AssertionError('Incorrect loss --> Use binary crossentropy',)
+ AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)","Batch 0 layer 1:  Out of Rang Problem, terminating training		 --- 0.5486089999999999 seconds ---	 	 
+change the activation function to softmax"
+2,39525358,BC," ++ scaler = StandardScaler()
+ ++ X = scaler.fit_transform(X)","AssertionError('Data is not normalized or scaled',)",No bug,"Batch 19 layer 1: Dead Node Problem, terminating training		 --- 13.167072000000001 seconds ---		 Normalize the data"
+3,47724077,BC," ++ scaler = StandardScaler()
+++ X = scaler.fit_transform(X)","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)","Batch 14 layer 2: Numerical Error in delta Weights, terminating training		 --- 11.295739000000001 seconds ---		 
+Please change the loss function 	 OR Please change the activaton function at layer: 3"
+4,59278771,MC,"++ scaler = StandardScaler()
+++ X = scaler.fit_transform(X)
+-- model.add(Dense(4, input_dim=4, activation=""relu"", kernel_initializer=""normal""))
+++ model.add(Dense(16, activation=""relu""))
+++ model.add(Dense(32, activation=""relu""))
+-- model.add(Dense(3, activation=""sigmoid"", kernel_initializer=""normal""))
+++ model.add(Dense(3, activation=""softmax"", kernel_initializer=""normal""))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> 
+Use softmax activation',)",No output
+5,52800582,Reg," ++ x_scaler = StandardScaler()
+++ y_scaler = StandardScaler()
+++ x = x_scaler.fit_transform(x[:, None])
+++ y = y_scaler.fit_transform(y[:, None])","AssertionError('Data is not normalized or scaled',)","AssertionError('Add metrics --> 
+Use mean squared error or mean absolute error',)","Batch 4 layer 0: Saturated Activation Problem, terminating training		 Normalize the data 		 --- 1.571479 seconds ---"
+6,34673164,BC," ++ Normalize the data
+-- model.add(Activation('softmax'))
+++model.add(Activation('sigmoid'))
+-- model.compile(loss='mean_squared_error', optimizer=sgd,metrics=[ 'accuracy' ])
+++ model.compile(loss='binary_crossentropy', optimizer='Adam', metrics=['accuracy' ])"," AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use binary crossentropy’,)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)
+AssertionError('Oscillating Loss --> Change Learning Rate',),
+AssertionError('Slow Convergence --> Change Optimizer/Learning Rate',)","Batch 4 layer 0: Saturated Activation Problem, terminating training		 Normalize the data 		 --- 2.4729249999999996 seconds ---"
+7,48221692,Reg,"-- neural_network.add(Dense(1, activation='sigmoid'))
+++ neural_network.add(Dense(1, activation='linear'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0 layer 3:  Out of Rang Problem, terminating training		 --- 0.30730400000000024 seconds ---	 	 
+change the activation function to softmax"
+8,44066044,BC,"++ X = preprocessing.scale(X)
+-- model.add(Dense(1, kernel_initializer='normal', activation='relu'))
+ ++ model.add(Dense(1, kernel_initializer='normal', activation='sigmoid'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 5: Numerical Problem Forward, terminating training 		 --- 0.6830479999999999 seconds ---		 Normalize the data"
+9,46642627,Reg,"++ X = (X - np.max(X)) / np.max(X)
+-- model.add(Dense(1, kernel_initializer = 'uniform', activation='sigmoid'))
+++ model.add(Dense(1, kernel_initializer = 'uniform', activation='linear'))
+ -- model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+++ model.compile(loss='mae', optimizer=opt, metrics=['mse'])
+-- opt = optimizers.SGD(lr=0.01)
+++ opt = optimizers.Adam(lr=0.001)","AssertionError('Data is not normalized or scaled',)","AssertionError(['Incorrect loss --> Use mean squared error or mean absolute error'],) 
+AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',) 
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0 layer 2: Numerical Error in delta Weights, terminating training		 --- 0.6432479999999998 seconds ---"
+10,46995209,Reg,"++ X = (X - np.max(X)) / np.max(X)
+-- model.add(Dense(10, input_dim=input_dim, activation='tanh'))
+++ model.add(Dense(10, input_dim=input_dim, activation='relu'))
+-- model.add(Dense(90, activation='tanh'))
+++ model.add(Dense(90, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(10, activation='tanh'))
+++ model.add(Dense(10, activation='relu'))
+-- model.add(Dense(1,activation='tanh'))
+++ model.add(Dense(1))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',),
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 19: Accurcy Not Increasing, terminating training		 --- 27.848416 seconds ---		 Normalize the data"
+11,51930566,MC,"-- model.add(Dense(3, init='normal', activation='sigmoid'))
+++ model.add(Dense(3, init='normal', activation='softmax'))",No Bug,"AssertionError('Incorrect output layer activation —> Use softmax activation',)",No output
+12,48934338,Reg,"sgd = sgd(lr=0.1)
+++ sgd = sgd(lr=0.001)",No bug,"AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Oscillating Loss --> Change Learning Rate',)
+AssertionError('Slow Convergence --> Change Optimizer/Learning Rate',)","Batch 0 layer 5:  Out of Rang Problem, terminating training		 --- 0.42824099999999987 seconds ---	 	 
+change the activation function to softmax"
+13,34311586,BC,"-- model.add(Dense(1, init='uniform', activation='softmax'))
+++ model.add(Dense(1, init='uniform',activation='sigmoid'))
+-- model.compile(loss='mean_squared_error', optimizer=sgd)
+++ model.compile(loss='binary_crossentropy', optimizer=sgd)
+-- sgd = SGD(lr=0.001, decay=1e-6, momentum=0.9, nesterov=True)
+++ sgd = SGD(lr=0.1, decay=1e-6, momentum=0.9, nesterov=True)"," AssertionError('Model not Learning',)","AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Add metrics --> Use accuracy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Stuck Accuracy --> Change Optimizer/Learning Rate',)","Batch 0 layer 4: Numerical Error in delta Weights, terminating training		 --- 0.37988599999999995 seconds ---	
+	 Please change the loss function 	 OR Please change the activaton function at layer: 5"
+14,31627380,BC,"-- model.add(Activation('softmax'))
+++ model.add(Activation('sigmoid'))
+-- model.compile(loss='categorical_crossentropy', optimizer=""adam"")
+++ model.compile(loss='binary_crossentropy', optimizer=""adam"")","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 3: Numerical Error in delta Weights, terminating training		 --- 0.9823560000000002 seconds ---		
+ Please change the loss function 	 OR Please change the activaton function at layer: 4"
+15,66840108,Reg,"-- model.add(Dense(196, input_dim=2, activation='relu'))
+++ model.add(Dense(196, input_dim=3, activation='relu'))
+-- model.add(Dense(1, activation='sigmoid'))
+++ model.add(Dense(1, activation='linear'))
+-- model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+++ model.compile(loss='mse', optimizer='adam', metrics=['mae'])","AssertionError('Data is not normalized or scaled',)","AssertionError('Mismatch in input shape',)
+AssertionError(['Incorrect loss --> Use mean squared error or mean absolute error'],)
+AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0: Invalid accuracy, terminating training		 --- 0.6627250000000002 seconds ---	 	 
+Please change the activation function at layer : 2"
+16,60831731,Multi Regre,"-- Dense(2, input_shape=(2,), activation='sigmoid')
+++ Dense(30, input_shape=(2,), activation='relu')
+++  Dense(10, activation='relu')
+-- Dense(2, activation='sigmoid')
+++   Dense(2, activation='linear')
+-- model.compile(SGD(lr=0.01), loss='mean_squared_error', metrics=['accuracy'])
+++ model.compile(SGD(lr=0.01), loss='mean_squared_error')",No Bug,"AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)
+AssertionError('Mismatch in output shape --> For regression use units = 1',)",No output
+17,59078187,Reg,"-- tf.keras.layers.Dense(10, activation='softmax')
+++  tf.keras.layers.Dense(1)","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> Use linear activation',)
+AssertionError('Mismatch in output shape --> For regression use units = 1',)","ValueError: Error when checking target: expected dense_2 to have shape (10,) but got array with shape (1,)"
+18,48976413,Reg,"-- model.add(Dense(1, activation='sigmoid'))
+++ model.add(Dense(1, activation='linear'))",No Bug,"AssertionError('Incorrect output layer activation —> Use linear activation',)",No output
+19,48251943,Reg,"-- model.add(Dense(1, activation='relu'))
+++ model.add(Dense(1, activation='linear'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0 layer 1: Numerical Problem Forward, terminating training 		 --- 0.29460700000000006 seconds ---		 Normalize the data"
+20,70650848,MC,"-- sc.fit_transform(X_train)
+++ X_train = sc.fit_transform(X_train)
+-- sc.fit_transform(X_test)
+++ X_test = sc.fit_transform(X_test)
+-- Dense(1, activation='sigmoid')
+++ Dense(3, activation='softmax')","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use accuracy',)
+AssertionError('Incorrect output layer activation --> Use softmax activation',)
+AssertionError('Mismatch in output shape --> number of units should be same as number of classes',)",No output
+21,68751439,MC,"-- model1.add(keras.layers.Dense(1, activation='softmax'))
+++ model1.add(keras.layers.Dense(11, activation='softmax'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Mismatch in output shape  —> number of units should be same as number of classes',)","ValueError: Error when checking target: expected dense_4 to have shape (1,) but got array with shape (11,)"
+22,66602662,MC,"-- tf.keras.layers.Dense(1, activation='sigmoid')
+++ tf.keras.layers.Dense(5, activation='softmax')",No Bug,"AssertionError('Add metrics --> Use accuracy',)
+AssertionError('Incorrect output layer activation --> Use softmax activation',), 
+AssertionError('Mismatch in output shape --> number of units should be same as number of classes',)",No output
+23,46247619,Reg,"-- model.add(Dense(1, activation='relu'))
+++ model.add(Dense(1))","AssertionError('Data is not normalized or scaled',)","AssertionError('Add metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',),",No output
+24,48486598,Reg,"sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X)
+-- model.add(Dense(1, input_shape=(1,)))
+++ model.add(Dense(1, activation = 'relu', input_shape=(1,)))
+-- model.add(Dense(5))
+++ model.add(Dense(5, activation='relu'))
+-- model.compile(loss='mean_absolute_error', optimizer='adam', metrics=['accuracy'])
+++ model.compile(loss='mean_absolute_error', optimizer='adam')","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Missing non-linear activation function',)","Batch 7: Invalid accuracy, terminating training		 --- 2.36078 seconds ---	 	 Please change the activation function at layer : 2"
+25,49583466,Reg,"-- regressor.add(Dense(units=20, activation='sigmoid', kernel_initializer='uniform', input_dim=1))
+++ regressor.add(Dense(units=20, activation='relu', input_dim=1))
+-- regressor.add(Dense(units=20, activation='sigmoid', kernel_initializer='uniform'))
+++ regressor.add(Dense(units=20, activation='relu'))
+-- regressor.add(Dense(units=20, activation='sigmoid', kernel_initializer='uniform'))
+++ regressor.add(Dense(units=20, activation='relu'))
+-- regressor.compile(loss='mean_squared_error', optimizer='sgd')
+++ regressor.compile(loss='mean_squared_error', optimizer='adam')",No Bug,No bug,"Batch 0 layer 0: Vanishing Gradient Problem in delta Weights, terminating training		 --- 0.6071589999999998 seconds ---		
+ Learning Rate"
+26,52566823,Reg,"-- model.add(Dense(1, activation = 'sigmoid'))
+++ model.add(Dense(1, activation = 'linear'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Add metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)
+AssertionError('Learning Rate too high: Decrease the Learning Rate',)",No output
+27,53700537,MC,"-- model.add(Dense(3,activation='relu',use_bias=False))
+++ model.add(Dense(3,activation='softmax'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation —> Use softmax activation',)",No output
+28,54738769,BC,"-- model.add(Dense(1, activation='softmax'))
+++ model.add(Dense(1, activation='sigmoid'))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Add metrics --> Use accuracy',),
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 6: Numerical Error in delta Weights, terminating training		 --- 0.9452310000000002 seconds ---"
+29,57397440,BC,"model.add(Dense(1, activation = tfnn.softmax))
+++ model.add(Dense(1, activation = tfnn.sigmoid))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 2: Numerical Error in delta Weights, terminating training		 --- 0.6524380000000001 seconds ---"
+30,41596619,MC,"-- model.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
+++ model.add(Dense(4, kernel_initializer='uniform', activation='softmax'))
+-- model.compile(loss='binary_crossentropy', optimizer=sgd, metrics=['accuracy'])
+++ model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use categorical crossentropy',)
+AssertionError('Incorrect output layer activation --> Use softmax activation',)
+AssertionError('Mismatch in output shape --> number of units should be same as number of classes',)
+AssertionError('Slow Convergence --> Change Optimizer/Learning Rate',)","Batch 0: Invalid accuracy, terminating training		 --- 0.424496 seconds ---	 	 Please change the activation function at layer : 1"
+31,51181393,Reg,"-- model.compile(optimizer = 'rmsprop', loss = 'mean_squared_error', metrics = ['accuracy'])
+++ model.compile(optimizer=optimizers.RMSprop(lr=0.1), loss='mean_squared_error', metrics=['mae'])","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)","Batch 0: Invalid accuracy, terminating training		 --- 0.26816299999999993 seconds ---	 	 Please change the activation function at layer : 0"
+32,60801900,Reg,"-- model.add(Dense(1, activation='relu'))
+++ model.add(Dense(1))",No bug,"AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0: Invalid accuracy, terminating training		 --- 0.8810980000000002 seconds ---	 	 Please change the activation function at layer : 5"
+33,33969059,Reg,"-- model.add(Dense(1, kernel_initializer='uniform', activation='softmax'))
+ ++ model.add(Dense(1,  kernel_initializer='uniform))","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Learning Rate too high: Decrease the Learning Rate',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0: Invalid accuracy, terminating training		 --- 2.748129 seconds ---		 Learning Rate"
+34,58572274,BC,"-- model.add(Dense(2,input_dim = 2,activation = 'relu'))
+++ model.add(Dense(20,input_dim = 2,activation = 'relu'))
+-- model.add(Dense(2,activation = 'relu'))
+++ model.add(Dense(20,activation = 'relu'))
+-- model.add(Dense(1,activation = 'relu'))
+++ model.add(Dense(1,activation = 'sigmoid'))",No Bug,"AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 2: Numerical Problem Forward, terminating training 		 --- 0.6476809999999997 seconds ---		Learning Rate"
+35,56317174,BC,"-- scaler_y = MinMaxScaler(feature_range =(-1, 1))
+++ scaler_y = MinMaxScaler(feature_range =())"," AssertionError('Number of labels not matching 
+with problem definition',)",,No output
+36,66407123,Reg,"-- Dense(1,activation='softmax')
+++ Dense(1)
+-- model.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+++ model.compile(optimizer='sgd', loss='mse', metrics=['mse'])","AssertionError('Data is not normalized or scaled',)","AssertionError(['Incorrect loss --> Use mean squared error or mean absolute error'],)
+AssertionError('Add metrics --> Use mean squared error or mean absolute error',)
+AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0: Invalid accuracy, terminating training		 --- 0.5496940000000001 seconds ---	 	 Please change the activation function at layer : 2"
+37,64395424,BC,"-- model.add(layers.Dense(1))
+++ model.add(layers.Dense(1, activation='sigmoid'))",No bug,"AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 2: Numerical Error in delta Weights, terminating training		 --- 0.6625710000000002 seconds ---"
+38,58051767,BC,--,No bug,No bug,No output
+39,58055105,BC,"++ Balance data
+-- model.add(Dense(1, activation = 'softmax'))
+++ model.add(Dense(1, activation = 'sigmoid'))",No bug,"AssertionError('Learning Rate too low: Increase the Learning Rate',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)","Batch 0 layer 2: Numerical Error in delta Weights, terminating training		 --- 0.7185740000000003 seconds ---"
+40,56452176,Reg,"-- model.add(Dense(1, activation=""relu"", input_shape=(x_train.shape[1:])))
+++ model.add(Dense(1, activation=""tanh"", input_shape=(x_train.shape[1:])))
+-- model.add(Dense(9, activation=""relu""))
+++ model.add(Dense(9, activation=""tanh""))
+-- model.add(Dense(1, activation=""relu""))
+++ model.add(Dense(1))"," AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect output layer activation --> Use linear activation',)","Batch 0 layer 0: Numerical Problem Forward, terminating training 		 --- 0.4947210000000002 seconds ---		 Normalize the data"
+41,61763616,BC,"-- model_05_01.add(Conv1D(filters=16, kernel_size=12, 
+                 input_shape=(x_train.shape[1], 1)))
+++ model_05_01.add(Conv1D(filters=16, kernel_size=12, 
+                 input_shape=(x_train.shape[1], 1,activation = 'relu')))
+-- model_05_01.add(Conv1D(filters=32, kernel_size=12))
+++ model_05_01.add(Conv1D(filters=32, kernel_size=12,activation ='relu'))
+
+-- model_05_01.add(Conv1D(filters=16, kernel_size=12))
+++ model_05_01.add(Conv1D(filters=16, kernel_size=12,activation='relu'))
+-- model_05_01.add(Dense(2, activation='sigmoid'))
+++ model_05_01.add(Dense(2, activation='softmax'))
+-- model_05_01.compile(loss='logcosh', optimizer='adam', 
+              metrics=['accuracy'])
+++ model_05_01.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])"," AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Missing non-linear activation function',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)",No output
+42,61234347,MC,"Use ReLU activations
+Simpler model
+Data Normalization
+More epochs"," AssertionError('Data is not normalized or scaled',)",No bug,"Batch 0 layer 7:  Out of Rang Problem, terminating training		 --- 1.336424 seconds ---	 	 change the activation function to softmax"
+43,https://github.com/hunkim/DeepLearningZeroToAll/commit/b5c4c9e#diff-c36876b7c59831e3231a19429460b6f8bfb0b84f99ce4fb86faee935d3ccefe4,Reg,"-- rmsprop = RMSprop(lr=1e-10)
+++ rmsprop = RMSprop(lr=0.1)
+-- model.compile(loss='mse', optimizer=rmsprop
+++ model.compile(loss='mse', optimizer=rmsprop,  metrics=['accuracy'])","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)","Batch 0: Invalid accuracy, 
+terminating training --- 0.2498579999999999 seconds ---	 	 
+Please change the activation function at layer : 1"
+44,https://github.com/hunkim/DeepLearningZeroToAll/commit/b5c4c9e#diff-c36876b7c59831e3231a19429460b6f8bfb0b84f99ce4fb86faee935d3ccefe4,Reg,"-- model.compile(loss='mse', optimizer='rmsprop')
+++ model.compile(loss='mse', optimizer='adam', metrics=['accuracy'])","AssertionError('Data is not normalized or scaled',)","AssertionError('Incorrect metrics --> Use mean squared error or mean absolute error',)","Batch 0: Invalid accuracy, 
+terminating training--- 0.24474899999999988 seconds ---	 	 
+Please change the activation function at layer : 0"
+45,https://github.com/huseynickishiyev/keras-regression/commit/f4f8700ef3e614f16e533ff0b305e8b46b6c6e42,Reg,--,No bug,"AssertionError('Add metrics --> Use mean squared error or mean absolute error',)",No output
+46,https://github.com/eangelou/kerasma/commit/2a2a46f,BC,"# Add more hidden layers
+++ model.add(Dense(16, activation='relu'))
+++ model.add(Dense(24, activation='relu'))
+++ model.add(Dense(8, activation='relu'))","AssertionError('Data is not normalized or scaled',)",No bug,No output
+47,https://github.com/vincenty2022/Averaging_Neural_Networks,Reg,"# Add a hidden layer with activation
+++ model.add(Dense(2, activation='relu'))",No bug,"AssertionError('Add metrics --> 
+Use mean squared error or mean absolute error',)
+AssertionError('Missing non-linear activation function',)",No Output
+48,https://github.com/NikhilM98/learning-deeplearning/commit/eb24906,BC,"-- model.compile(Adam(lr=100), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+++ model.compile(Adam(lr=0.0001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])",No bug,"AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)","Batch 0 layer 2:  Out of Rang Problem, 
+terminating training--- 0.7170229999999997 seconds ---	 	
+ change the activation function to softmax"
+49,https://github.com/paulchen2713/Medical_Trial_NN/blob/205be1ac21b58cba26daf4d56e996a609c8f32aa/medical_trial_ANN.py,BC,--,No bug,"AssertionError('Incorrect loss --> Use binary crossentropy',)
+AssertionError('Incorrect output layer activation --> Use sigmoid activation',)
+AssertionError('Mismatch in output shape --> For binary classification use units = 1',)","Batch 0 layer 2:  Out of Rang Problem, 
+terminating training--- 0.7204320000000002 seconds ---	 	 change the activation function to softmax"
+50,https://github.com/DanilaEremenko/NeuralNetwork/commit/eba6bed#diff-0053517609ecbb512249d305cf2ffaa9bca41390fde509a865f5bc13212bef6a,BC,"-- model.add(Activation('sigmoid'))
+++ model.add(Activation('hard_sigmoid'))
+-- history = model.fit(inputs, outputs, batch_size=1, nb_epoch=1000)
+++ history = model.fit(inputs, outputs, batch_size=1, nb_epoch=300)",No bug,"AssertionError('Learning Rate too high: 
+Decrease the Learning Rate',)","Batch 0 layer 0: Numerical Error in delta Weights, 
+terminating training--- 0.493042 seconds ---		
+ Please change the activaton function at layer: 1"
