@@ -20,19 +20,27 @@ pip install -r requirements.txt
 
 6. For testing data preparation stage
 	-- Navigate to KUnit_data
-	-- Open data_preprocess.py in text editor, add the necessary steps according to the task and save it.
+	-- Open data_preprocess.py in text editor, add the necessary steps according to the task and save it. 
+	   (Note: To reproduce the results of motivation examples these steps are already added.)
 	-- In terminal run the file:
 		python test_phase_preprocess.py
-	-- The data from data_preprocess.py is default passed to the test_phase_preprocess.py. Test and debug your code using the fix suggestions provided after executing the program.
+	   (Note: To reproduce the results of motivation examples please enter type of problem - regression and neural network 
+            architecture type - dnn.)
+	-- The data from data_preprocess.py is default passed to the test_phase_preprocess.py. Test and debug your code using the fix 
+           suggestions provided after executing the program.
 	-- After fixing the bugs, run the program and check for bugs.
 
 	
 7. For testing model design stage
 	-- Navigate to KUnit_model
 	-- Open design_model.py in text editor, add the necessary steps according to the task and save it.
+           (Note: To reproduce the results of motivation examples these steps are already added.)
 	-- In terminal run the file:
 		python test_design_model.py
-	-- The model from design_model.py is default passed to the test_design_model.py. Test and debug your code using the fix suggestions provided after executing the program.
-	-- After fixing all the bugs, run test_improved_design_model.py. Test and debug your code using the fix suggestions provided after executing the program. 
+           (Note: To reproduce the results of motivation examples please enter type of problem - regression and number of features - 7.)
+	-- The model from design_model.py is default passed to the test_design_model.py. Test and debug your code using the fix 
+           suggestions provided after executing the program.
+	-- After fixing all the bugs, run test_improved_design_model.py. Test and debug your code using the fix suggestions provided 
+           after executing the program. 
 
 	
