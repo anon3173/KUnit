@@ -18,7 +18,7 @@ This repository contains source code of KUnit, benchmark used for empirical eval
 # Benchmark for Empirical Evaluation
 The 50 buggy programs used for empiricial evaluation are stored under the directory [Benchmark_Empirical_Evaluation](Benchmark_Empirical_Evaluation). Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separated into different files used for evaluating KUnit.
 
-# Datasets used for User Study
+# Datasets Used for User Study
 The directory [Datasets_UserStudy](Datasets_UserStudy) contains the 5 datasets used in user study.
 
 # KUnit
@@ -26,7 +26,7 @@ To run KUnit, one needs to create a virtual environment. The instructions for cr
 
 
 # User Study Task Description
-The detail description of the task for each stage (data preparation and model design) provided to the participants during the user study is in the directory [UserStudy_Tasks](UserStudy_Tasks).
+The detailed description of the task for each stage (data preparation and model design) provided to the participants during the user study is in the directory [UserStudy_Tasks](UserStudy_Tasks).
 
 # Participants Response
 The qualitative response highlighting the advantages and disadvantages obtained from 36 participants in a post-study survey is provided in [Participants_Response.pdf](Participants_Response.pdf).
