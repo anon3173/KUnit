@@ -16,7 +16,7 @@ This repository contains source code of KUnit, benchmark used for empirical eval
 └── RQ2_Results.xlsx                       # Contains results of comparing KUnit with DeepDiagnosis
 ```
 # Benchmark for Empirical Evaluation
-The 50 buggy programs used for empicial evaluation are stored under the directory [Benchmark_Empirical_Evaluation](Benchmark_Empirical_Evaluation). Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separted in different files used for evaluating KUnit.
+The 50 buggy programs used for empicial evaluation are stored under the directory [Benchmark_Empirical_Evaluation](Benchmark_Empirical_Evaluation). Each buggy program is stored in folder named after the StackOverflow post handle and GitHub repository name corresponding to it. Each folder also contains the data and model stages separted into different files used for evaluating KUnit.
 
 # Datasets used for User Study
 The directory [Datasets_UserStudy](Datasets_UserStudy) contains the 5 datasets used in user study.
@@ -26,10 +26,10 @@ To run KUnit, one needs to create a virtual environment. The instructions for cr
 
 
 # User Study Task Description
-The detail description of the task for each stage (data preparation and model design) provided to the participants during the user study are in directory [UserStudy_Tasks](UserStudy_Tasks).
+The detail description of the task for each stage (data preparation and model design) provided to the participants during the user study is in the directory [UserStudy_Tasks](UserStudy_Tasks).
 
 # Participants Response
-The qualitative response highlighting the advantages and disadvantages obtained from 36 participants in a post-study survey are provided in [Participants_Response.pdf](Participants_Response.pdf).
+The qualitative response highlighting the advantages and disadvantages obtained from 36 participants in a post-study survey is provided in [Participants_Response.pdf](Participants_Response.pdf).
 
 # Results
 The results of comparing KUnit with the state-of-the-art approach DeepDiagnosis on 50 programs in our benchmark are provided in [RQ2_Results.xlsx](RQ2_Results.xlsx).
