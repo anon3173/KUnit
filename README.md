@@ -12,7 +12,7 @@ This repository contains source code of KUnit, benchmark used for empirical eval
     ├── Instructions.txt                   # Intructions for using KUnit 
     └── requirements.txt                   # Dependency and Python virutal environment information
 ├── UserStudy_Tasks                        # Details of tasks provided to the participants
-├── Analysis_of_Debugging_Time.pdf         # Contains detail analysis of debugging time
+├── Analysis_of_Debugging_Time.pdf         # Contains detailed analysis of debugging time with and without KUnit
 ├── Participants_Response.pdf              # Contains qualitative response from user study participants
 ├── RQ2_Results.xlsx                       # Contains results of comparing KUnit with DeepDiagnosis
 └── RQ2_UserStudy_Results.xlsx             # Contains results of comparing KUnit with DeepDiagnosis during user study
